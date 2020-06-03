@@ -1,5 +1,7 @@
 package todoist;
 
+import com.sun.codemodel.internal.JCase;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.invoke.SwitchPoint;
 import java.util.concurrent.TimeUnit;
 
 public class Parentest {
@@ -28,11 +31,11 @@ public class Parentest {
         wait = new WebDriverWait(driver, 5);
     }
 
-    /*@After
+    @After
     public void tearDown() {
         driver.quit();
 
-    }*/
+    }
 
 
     public void navegarUrl(String url) {
@@ -91,11 +94,23 @@ public class Parentest {
         WebElement proyectoAgregado = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#projects_list > li:last-of-type .name > span")));
         WebElement colorAgregado = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#projects_list > li:last-of-type .td_color > div")));
 
-        //WebElement colorAgregado = driver.findElement(By.cssSelector("#projects_list > li:last-of-type .td_color > div"));
-        //wait.until(ExpectedConditions.visibilityOf(colorAgregado));
+            String expectedColor = "color: rgb(";
 
-        Assert.assertEquals(proyectoAgregado.getText(), nombreProyecto);
-        Assert.assertEquals(colorAgregado.getAttribute("style"), "color: rgb(219, 64, 53);");
+            switch (color) {
+                case "red":
+                    expectedColor += "219, 64, 53);";
+                    break;
+
+                case "blue":
+                    expectedColor += "20, 170, 245););";
+                    break;
+
+            }
+
+        Assert.assertEquals(nombreProyecto, proyectoAgregado.getText());
+        Assert.assertEquals(expectedColor, colorAgregado.getAttribute("style"));
+
+            System.out.println(expectedColor + " " + color);
 
 
         }

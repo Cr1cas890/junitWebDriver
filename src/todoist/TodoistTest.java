@@ -14,8 +14,8 @@ public class TodoistTest extends Parentest{
             validarLandingPage();
             login("jomarnavarro@gmail.com", "Test@1234");
             validarHomePage();
-            crearProyecto("CDCS1", "Red");
-            validarProyecto("CDCS1", "Red");
+            crearProyecto("CDCS1", "red");
+            validarProyecto("CDCS1", "red");
         }
  }
 
