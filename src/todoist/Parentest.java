@@ -24,13 +24,6 @@ public class Parentest {
     public WebDriverWait wait;
 
 
-    @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 5);
-    }
-
     @After
     public void tearDown() {
         driver.quit();
@@ -76,7 +69,7 @@ public class Parentest {
 
     }
 
-        public void crearProyecto (String nombreProyecto, String color){
+        public void crearProyecto (String nombreProyecto, String color) {
         WebElement agregar = driver.findElement(By.cssSelector(".adder_icon"));
         agregar.click();
         WebElement projectName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#edit_project_modal_field_name")));
