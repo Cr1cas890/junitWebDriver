@@ -25,17 +25,6 @@ public class ImdbTest extends ParentTest{
 		playTrailer();
 	}
 
-	@Test
-	public void testValidateMovieStars() {
-		navigateToPage("http://imdb.com");
-		validatePage();
-		searchMovie("The Avengers");
-		validateMovieExists("The Avengers");
-		selectMovie("The Avengers", "2012");
-		validateCorrectMovie();
-		validateMovieStars();
-	}
-
 	
 
 }
